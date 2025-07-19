@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const redirectUrl = searchParams.get('redirectUrl') || '/';
 
   const token = await getToken({
-    req: request,
+    req: request.clone(),
     secret: process.env.AUTH_SECRET,
     secureCookie: !isDevelopmentEnvironment,
   });
